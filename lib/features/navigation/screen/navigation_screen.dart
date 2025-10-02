@@ -17,10 +17,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Color.fromARGB(255, 3, 92, 107),
         items: [
-          TabItem(icon: FaIcon(FontAwesomeIcons.user), title: 'شخصي'),
-          TabItem(icon: FaIcon(FontAwesomeIcons.receipt), title: 'الأملاك'),
+          TabItem(icon: Icon(Icons.person_2_outlined), title: 'شخصي'),
+          TabItem(icon: Icon(Icons.receipt), title: 'الأملاك'),
           TabItem(icon: Icons.add, title: ''),
-          TabItem(icon: FaIcon(FontAwesomeIcons.comments), title: 'مساعد ذكي'),
+          TabItem(icon: Icon(CupertinoIcons.chat_bubble_2), title: 'مساعد ذكي'),
           TabItem(icon: Icons.category_outlined, title: 'لوحة التحكم'),
         ],
         onTap: (int i) => print('click index=$i'),
