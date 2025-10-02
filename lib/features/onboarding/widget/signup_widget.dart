@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wathiq/features/navigation/screen/navigation_screen.dart';
 import 'package:wathiq/features/theme/app_colors.dart';
 import 'custom_button.dart';
 import 'reusable_textfield.dart';
@@ -69,10 +70,11 @@ class _SignupWidgetState extends State<SignupWidget> {
             ),
             const SizedBox(height: 20),
 
-            CustomButton(text: "تسجيل", onPressed: () {}),
+            CustomButton(text: "تسجيل", onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute<void>(builder:(context) => NavigationScreen()));
+            }),
             TextButton(onPressed: widget.onBack, child: const Text("رجوع",
               style: TextStyle(color: AppColors.secondary1), )),
-
 
           ],
         ),

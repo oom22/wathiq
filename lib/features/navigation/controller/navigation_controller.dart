@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:wathiq/features/add/screen/add_screen.dart';
-import 'package:wathiq/features/ai_assistant/screen/ai_assistant_screen.dart';
-import 'package:wathiq/features/belongings/screen/belongings_screen.dart';
-import 'package:wathiq/features/dashboard/screen/dashboard_screen.dart';
-import 'package:wathiq/features/personal/screen/personal_screen.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class NavigationController {
-  int index = 4;
-  List<Widget> pages = [
-    PersonalScreen(),
-    BelongingsScreen(),
-    AddScreen(),
-    AiAssistantScreen(),
-    DashboardScreen(),
-  ];
+  static final NavigationController _instance = NavigationController._internal();
+  factory NavigationController() => _instance;
+
+  NavigationController._internal();
+
+  final PersistentTabController controller = PersistentTabController(initialIndex: 2);
+
+  void changeTab(int index) {
+    controller.index = index;
+  }
 }
