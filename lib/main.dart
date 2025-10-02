@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wathiq/features/dashboard/screen/dashboard_screen.dart';
 import 'package:wathiq/features/navigation/screen/navigation_screen.dart';
+import 'package:wathiq/features/onboarding/screen/auth_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,6 +13,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // test
-    return const MaterialApp(home: NavigationScreen());
+    return const MaterialApp(home: AuthScreen());
   }
 }
