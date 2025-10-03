@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wathiq/features/theme/app_colors.dart';
 
 class PersonalScreen extends StatelessWidget {
   const PersonalScreen({super.key});
@@ -6,7 +7,7 @@ class PersonalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF035C6B), // خلفية داكنة
+      backgroundColor: AppColors.primary, // خلفية داكنة
       body: SafeArea(
         child: Column(
           children: [
@@ -35,43 +36,65 @@ class PersonalScreen extends StatelessWidget {
 
             // 🟢 الكرت الأبيض
             Expanded(
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 20,
+                    horizontal: 16,
                   ),
-                ),
-                child: Column(
-                  children: [
-                    _buildProfileOption("معلومات المكتب", Icons.receipt_long),
-                    _buildProfileOption("إعدادات الحساب", Icons.person_outline),
-                    _buildProfileOption("الدعم و المساعدة", Icons.chat_bubble_outline),
-                    _buildProfileOption("الشروط والأحكام", Icons.verified_user_outlined),
-                    _buildProfileOption("سياسة الخصوصية", Icons.privacy_tip_outlined),
-
-                    const Spacer(),
-
-                    // زر تسجيل خروج
-                    ListTile(
-                      leading: const Icon(Icons.logout, color: Colors.red),
-                      title: const Text(
-                        "تسجيل خروج",
-                        style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                      trailing: const Icon(Icons.arrow_back_ios, size: 18, color: Colors.red),
-                      onTap: () {
-                        // TODO: Logout action
-                      },
+                  decoration: const BoxDecoration(
+                    color: AppColors.background,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
                     ),
-                  ],
+                  ),
+                  child: Column(
+                    children: [
+                      _buildProfileOption("معلومات المكتب", Icons.receipt_long),
+                      _buildProfileOption(
+                        "إعدادات الحساب",
+                        Icons.person_outline,
+                      ),
+                      _buildProfileOption(
+                        "الدعم و المساعدة",
+                        Icons.chat_bubble_outline,
+                      ),
+                      _buildProfileOption(
+                        "الشروط والأحكام",
+                        Icons.verified_user_outlined,
+                      ),
+                      _buildProfileOption(
+                        "سياسة الخصوصية",
+                        Icons.privacy_tip_outlined,
+                      ),
+
+                      // زر تسجيل خروج
+                      ListTile(
+                        leading: const Icon(
+                          Icons.arrow_back_ios,
+                          size: 18,
+                          color: Colors.red,
+                        ),
+                        title: const Text(
+                          "تسجيل خروج",
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.right,
+                        ),
+                        trailing: const Icon(Icons.logout, color: Colors.red),
+                        onTap: () {
+                          // TODO: Logout action
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -83,19 +106,23 @@ class PersonalScreen extends StatelessWidget {
 
   // Widget مساعد لكل خيار
   Widget _buildProfileOption(String title, IconData icon) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
-      leading: Icon(icon, color: const Color(0xFF035C6B)),
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 15,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10,right: 10),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+        leading:  const Icon(
+          Icons.arrow_back_ios,
+          size: 18,
+          color: Colors.black54,
         ),
-        textAlign: TextAlign.right,
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+          textAlign: TextAlign.right,
+        ),
+        trailing:Icon(icon, color: const Color(0xFF035C6B)),
+        onTap: () {},
       ),
-      trailing: const Icon(Icons.arrow_back_ios, size: 18, color: Colors.black54),
-      onTap: () {},
     );
   }
 }
