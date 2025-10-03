@@ -19,6 +19,8 @@ dependencies:
   flutter_gemini: ^3.0.0
   easy_stepper: ^0.8.5+1
   file_picker: ^10.3.3
+  card_swiper: ^3.0.1
+
 
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:wathiq/features/theme/app_colors.dart';
 import 'belongings_details_screen.dart';
 
 class BelongingsScreen extends StatelessWidget {
@@ -41,9 +42,10 @@ class BelongingsScreen extends StatelessWidget {
       "status": "للبيع",
       "location": "حي العقيق - الرياض",
       "street": "شارع العليا",
-      "price": "900000 رس",
+      "price": "900,000 رس",
       "icon": Icons.map,
     },
+    
   ];
 
   @override
@@ -104,7 +106,7 @@ class BelongingsScreen extends StatelessWidget {
                             "${property["type"]} (${property["units"]} صك)",
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 22,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -120,22 +122,22 @@ class BelongingsScreen extends StatelessWidget {
                               vertical: 6,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.4),
+                              color: Colors.white.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Row(
                               children: [
                                 Icon(
                                   property["icon"],
-                                  color: Colors.white,
-                                  size: 18,
+                                  color: AppColors.background,
+                                  size: 20,
                                 ),
                                 const SizedBox(width: 6),
                                 const Text(
                                   "عرض التفاصيل",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

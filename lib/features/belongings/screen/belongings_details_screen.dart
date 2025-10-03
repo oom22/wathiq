@@ -79,6 +79,7 @@ class _BelongingsDetailsScreenState extends State<BelongingsDetailsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                //--------------------------------
                 Stack(
                   children: [
                     ClipRRect(
@@ -144,6 +145,9 @@ class _BelongingsDetailsScreenState extends State<BelongingsDetailsScreen> {
                     ],
                   ),
                 ),
+                //----------------------------
+
+
               ],
             ),
           ),
