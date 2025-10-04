@@ -13,8 +13,8 @@ class FormCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: const Color(0xFFE6F2F3), // light teal like the mock
-          borderRadius: BorderRadius.circular(16), // rounded corners
+          color: const Color(0xFFE6F2F3),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: accent.withOpacity(0.20), // subtle outline
             width: 1.0,

@@ -96,9 +96,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
         colorBehindNavBar: Colors.white,
       ),
       navBarStyle: NavBarStyle.style15,
-
-
-        // padding: const EdgeInsets.only(top: 0),
     );
   }
 }

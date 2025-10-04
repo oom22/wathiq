@@ -34,18 +34,15 @@ class _AddScreenState extends State<AddScreen> {
     setState(() => _pickedName = result.files.single.name);
   }
 
-  // Step 0
   final nameCtrl = TextEditingController();
   final idCtrl = TextEditingController();
   final phoneCtrl = TextEditingController();
   final ibanCtrl = TextEditingController();
 
-  // Step 1
   final deedCtrl = TextEditingController();
   final meterCtrl = TextEditingController();
   final nationalAddrCtrl = TextEditingController();
 
-  // (unused extras, keep if you need later)
   final addressCtrl = TextEditingController();
   final cityCtrl = TextEditingController();
 
@@ -68,7 +65,7 @@ class _AddScreenState extends State<AddScreen> {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  'عالبركة! تم اضافة الصك لقاعدة البيانت',
+                  'عالبركة! تم اضافة الصك لقاعدة البيانات',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
                 ),
               ],
@@ -134,8 +131,10 @@ class _AddScreenState extends State<AddScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-
-        title: const Text("المعلومات الشخصية"),
+        title: Text(
+          "المعلومات الشخصية",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: Column(
@@ -181,7 +180,6 @@ class _AddScreenState extends State<AddScreen> {
             onStepReached: (i) => setState(() => active = i),
           ),
 
-          // White rounded area
           Expanded(
             child: Container(
               width: double.infinity,
@@ -207,10 +205,8 @@ class _AddScreenState extends State<AddScreen> {
     );
   }
 
-  // ---------- Step-specific content ----------
   Widget _buildStepContent(int step) {
     switch (step) {
-      // Step 0 (button INSIDE the card)
       case 0:
         return SingleChildScrollView(
           key: const ValueKey('step0'),
@@ -247,7 +243,6 @@ class _AddScreenState extends State<AddScreen> {
           ),
         );
 
-      // Step 1 (button INSIDE the card)
       case 1:
         return SingleChildScrollView(
           key: const ValueKey('step1'),
@@ -317,7 +312,6 @@ class _AddScreenState extends State<AddScreen> {
           ),
         );
 
-      // Step 2 (two cards + button INSIDE the white area)
       default:
         return SingleChildScrollView(
           key: const ValueKey('step2'),
@@ -352,21 +346,6 @@ class _AddScreenState extends State<AddScreen> {
           ),
         );
     }
-  }
-}
-
-// ---------- Helpers ----------
-class _StepWrap extends StatelessWidget {
-  final List<Widget> children;
-  const _StepWrap({super.key, required this.children});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      key: key,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: children,
-    );
   }
 }
 
@@ -405,7 +384,17 @@ class _SummaryCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              textDirection: TextDirection.rtl,
               children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: accent,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
                 GestureDetector(
                   onTap: onEdit,
                   child: Row(
@@ -423,18 +412,9 @@ class _SummaryCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Spacer(),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: accent,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-                const Spacer(flex: 2),
               ],
             ),
+
             const SizedBox(height: 10),
             ...rows.map((e) => _row(e.$1, e.$2, accent)),
           ],
@@ -448,23 +428,25 @@ class _SummaryCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
+        textDirection: TextDirection.rtl,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Text(
-              v,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                color: accent.withOpacity(.9),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
           Text(
             '$label :',
             style: TextStyle(
               color: accent.withOpacity(.9),
               fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              v,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                color: accent.withOpacity(.9),
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],

@@ -48,10 +48,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
         children: [
           const SizedBox(height: 16),
 
-          // 🟢 Top Section (تصفية + مربع البحث)
           Row(
             children: [
-              // زر التصفية
               Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
@@ -74,9 +72,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               const SizedBox(width: 12),
 
-              // مربع البحث
               Expanded(
                 child: TextField(
+                  textAlign: TextAlign.right,
+                  textDirection: TextDirection.rtl,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                       vertical: 10,
@@ -88,7 +87,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     fillColor: Colors.white,
                     suffixIcon: const Icon(Icons.search, color: Colors.grey),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(17),
                       borderSide: BorderSide.none,
                     ),
                   ),
@@ -101,7 +100,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           Row(
             children: [
-              // 🟢 كرت العقارات
               Expanded(
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -114,7 +112,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        // الايقونة
                         Align(
                           alignment: Alignment.topLeft,
                           child: CircleAvatar(
@@ -131,7 +128,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 4),
 
-                        // العنوان
                         const Text(
                           "العقارات",
                           style: TextStyle(
@@ -141,10 +137,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         const SizedBox(height: 8),
 
-                        // المخطط + الليجند
                         Row(
                           children: [
-                            // PieChart صغير
                             SizedBox(
                               width: 60,
                               height: 60,
@@ -174,7 +168,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                             const SizedBox(width: 8),
 
-                            // الليجند يمين
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -204,7 +197,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
               const SizedBox(width: 12),
 
-              // 🔵 كرت نسبة الوحدات المؤجرة
               Expanded(
                 child: Card(
                   shape: RoundedRectangleBorder(
@@ -245,7 +237,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                         Row(
                           children: [
-                            // BarChart صغير
                             SizedBox(
                               width: 60,
                               height: 60,
@@ -339,13 +330,79 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ],
           ),
           const SizedBox(height: 18),
-          // --- CARD 1: إجمالي عقود البيع ---
+
+          // --- CARD1---
+          _buildCard(
+            title: "اخبار السوق العقاري",
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const Text(
+                  ": الرياض",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary,
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                const SizedBox(height: 6),
+
+                const Text(
+                  "ارتفعت مبيعات العقارات بنسبة 63% خلال النصف الأول من 2025، بإجمالي صفقات تجاوز 65.7 مليار ريال.",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.4,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                const SizedBox(height: 15),
+
+                const Text(
+                  ": ”مبادرة “توازن ",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primary,
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+                const SizedBox(height: 6),
+
+                const Text(
+                  "وزارة الإسكان تطلق مشروع لتوفير حتى 40 ألف قطعة أرض سكنية سنوياً بهدف دعم التملك وتوسيع المشاريع السكنية.",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.4,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [
+                    Text(
+                      "اخر تحديث قبل 3 ساعات",
+                      style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 126, 126, 126)),
+                    ),
+                    SizedBox(width: 4),
+                    Icon(Icons.access_time, size: 16, color: Colors.grey),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // --- CARD 2---
           _buildCard(
             title: "إجمالي عقود البيع",
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // 🔵 الصف العلوي: الزيادة الأسبوعية + العنوان + القيمة
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -372,9 +429,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: const [
                         SizedBox(height: 4),
                         Text(
-                          "﷼16,896.22",
+                          "﷼16,896.22  ",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                             color: AppColors.secondary1,
                           ),
@@ -387,12 +444,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(height: 12),
                 const Divider(thickness: 1, color: Colors.black12),
 
-                // 🟢 البار شارت مع القيم فوق الأعمدة
                 SizedBox(
                   height: 220,
                   child: Stack(
                     children: [
-                      // 🔵 البار شارت
                       Directionality(
                         textDirection: TextDirection.rtl,
                         child: BarChart(
@@ -419,20 +474,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   reservedSize: 22,
                                   getTitlesWidget: (v, m) {
                                     const labels = [
-                                      'Jan',
-                                      'Feb',
-                                      'Mar',
-                                      'Apr',
-                                      'May',
-                                      'Jun',
-                                      'Jul',
-                                      'Aug',
+                                      'اغسطس',
+                                      'يوليو',
+                                      'يونيو',
+                                      'مايو',
+                                      'ابريل',
+                                      'مارس',
+                                      'فبراير',
+                                      'يناير',
                                     ];
                                     final i = v.toInt();
                                     if (i >= 0 && i < labels.length) {
                                       return Text(
                                         labels[i],
-                                        style: const TextStyle(fontSize: 12),
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       );
                                     }
                                     return const SizedBox.shrink();
@@ -442,21 +500,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                             barGroups: List.generate(8, (i) {
                               final heights = [
-                                9.0,
-                                7.5,
-                                6.0,
-                                5.8,
-                                5.2,
-                                4.5,
-                                4.3,
-                                8.5,
+                                9342.0,
+                                7500.0,
+                                6200.0,
+                                5800.0,
+                                5200.0,
+                                4500.0,
+                                4300.0,
+                                8500.0,
                               ];
                               final isAccent = i == 3;
                               return BarChartGroupData(
                                 x: i,
                                 barRods: [
                                   BarChartRodData(
-                                    toY: heights[i],
+                                    toY: heights[i] / 1000,
                                     width: 35,
                                     borderRadius: const BorderRadius.all(
                                       Radius.circular(12),
@@ -472,22 +530,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                         ),
                       ),
-
-                      // 🟢 الأرقام فوق الأعمدة
                       Positioned.fill(
                         child: LayoutBuilder(
                           builder: (context, constraints) {
                             final barCount = 8;
                             final barWidth = constraints.maxWidth / barCount;
                             final heights = [
-                              9.0,
-                              7.5,
-                              6.0,
-                              5.8,
-                              5.2,
-                              4.5,
-                              4.3,
-                              8.5,
+                              "9,342",
+                              "7,500",
+                              "6,200",
+                              "5,800",
+                              "5,200",
+                              "4,500",
+                              "4,300",
+                              "8,500",
                             ];
                             return Row(
                               children: List.generate(barCount, (i) {
@@ -496,18 +552,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   child: Align(
                                     alignment: Alignment.topCenter,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
-                                        top:
-                                            constraints.maxHeight *
-                                                (1 - (heights[i] / 20)) -
-                                            20,
-                                      ),
+                                      padding: const EdgeInsets.only(top: 150),
                                       child: Transform.rotate(
                                         angle: -1.5700,
                                         child: Text(
-                                          heights[i].toString(),
+                                          heights[i],
                                           style: const TextStyle(
-                                            fontSize: 12,
+                                            fontSize: 11,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
                                           ),
@@ -530,7 +581,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           const SizedBox(height: 16),
 
-          // --- CARD 2: العقارات حسب الحالة (PieChart + Legend) ---
+          // --- CARD 3---
           _buildCard(
             title: "العقارات حسب الحالة",
             child: SizedBox(
@@ -538,7 +589,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // 🟢 يسار: PieChart صغير
                   SizedBox(
                     width: 120,
                     child: Padding(
@@ -569,7 +619,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ),
 
-                  // 🔵 يمين: الليجند
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -609,7 +658,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           const SizedBox(height: 16),
 
-          // --- CARD 3: العقارات حسب النوع ---
+          // --- CARD 4---
           _buildCard(
             title: "العقارات حسب النوع",
             subtitle: "200 وحدة",
@@ -697,7 +746,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /// 🟢 Widget Helper لبناء كل Card
+  /// Widget Helper
   Widget _buildCard({
     required String title,
     String? subtitle,

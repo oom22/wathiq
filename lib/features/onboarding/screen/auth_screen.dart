@@ -59,7 +59,6 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // الخلفية فيديو
           _controller.value.isInitialized
               ? FittedBox(
                 fit: BoxFit.cover,
@@ -71,7 +70,6 @@ class _AuthScreenState extends State<AuthScreen> {
               )
               : Container(color: Colors.black),
 
-          // اللوقو متحرك
           AnimatedAlign(
             duration: const Duration(milliseconds: 400),
             alignment:
@@ -88,7 +86,6 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
           ),
 
-          // البوتوم شيت
           Align(
             alignment: Alignment.bottomCenter,
             child: AnimatedSwitcher(
