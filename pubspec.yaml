@@ -21,6 +21,7 @@ dependencies:
   file_picker: ^10.3.3
   card_swiper: ^3.0.1
   flutter_chat_ui: ^2.9.0
+  http: ^1.2.0
 
 
 

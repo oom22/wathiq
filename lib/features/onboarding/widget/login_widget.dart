@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wathiq/features/navigation/screen/navigation_screen.dart';
 import 'package:wathiq/features/theme/app_colors.dart';
 import 'custom_button.dart';
 import 'reusable_textfield.dart';
@@ -29,9 +30,16 @@ class _LoginWidgetState extends State<LoginWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-           const Text( "تسجيل الدخول",style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: AppColors.secondary1),),
-           Divider(color: AppColors.secondary1,thickness: 1,),
-           const SizedBox(height: 10),
+          const Text(
+            "تسجيل الدخول",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+              color: AppColors.secondary1,
+            ),
+          ),
+          Divider(color: AppColors.secondary1, thickness: 1),
+          const SizedBox(height: 10),
           ReusableTextField(
             controller: emailController,
             hintText: "Email@mail.com",
@@ -60,7 +68,17 @@ class _LoginWidgetState extends State<LoginWidget> {
 
           const SizedBox(height: 20),
 
-          CustomButton(text: "تسجيل الدخول", onPressed: () {}),
+          CustomButton(
+            text: "تسجيل الدخول",
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => NavigationScreen(),
+                ),
+              );
+            },
+          ),
           TextButton(
             onPressed: widget.onBack,
             child: const Text(

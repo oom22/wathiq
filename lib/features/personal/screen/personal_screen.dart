@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wathiq/features/onboarding/screen/auth_screen.dart';
 import 'package:wathiq/features/theme/app_colors.dart';
 
 class PersonalScreen extends StatelessWidget {
@@ -90,7 +91,12 @@ class PersonalScreen extends StatelessWidget {
                         ),
                         trailing: const Icon(Icons.logout, color: Colors.red),
                         onTap: () {
-                          // TODO: Logout action
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (context) => AuthScreen(),
+                            ),
+                          );
                         },
                       ),
                     ],
@@ -107,10 +113,10 @@ class PersonalScreen extends StatelessWidget {
   // Widget مساعد لكل خيار
   Widget _buildProfileOption(String title, IconData icon) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
-        leading:  const Icon(
+        leading: const Icon(
           Icons.arrow_back_ios,
           size: 18,
           color: Colors.black54,
@@ -120,7 +126,7 @@ class PersonalScreen extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
           textAlign: TextAlign.right,
         ),
-        trailing:Icon(icon, color: const Color(0xFF035C6B)),
+        trailing: Icon(icon, color: const Color(0xFF035C6B)),
         onTap: () {},
       ),
     );

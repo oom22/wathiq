@@ -132,7 +132,12 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("المعلومات الشخصية"), centerTitle: true),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+
+        title: const Text("المعلومات الشخصية"),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           // Stepper
@@ -182,7 +187,7 @@ class _AddScreenState extends State<AddScreen> {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               decoration: const BoxDecoration(
-                color: AppColors.secondary1,
+                color: AppColors.primary,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
@@ -198,7 +203,7 @@ class _AddScreenState extends State<AddScreen> {
           ),
         ],
       ),
-      backgroundColor: AppColors.secondary1,
+      backgroundColor: AppColors.primary,
     );
   }
 

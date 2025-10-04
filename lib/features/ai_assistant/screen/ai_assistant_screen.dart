@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_core/flutter_chat_core.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:http/http.dart' as http;
+import 'package:wathiq/features/theme/app_colors.dart';
 
 /// Tiny client for Groq's Allam models (OpenAI-compatible).
 class AllamApi {
@@ -120,7 +121,11 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('المساعد الذكي'),
+        backgroundColor: AppColors.primary,
+        title: const Text(
+          'المساعد الذكي',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
@@ -129,6 +134,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
       body: Directionality(
         textDirection: TextDirection.rtl, // Arabic layout
         child: Chat(
+          backgroundColor: AppColors.primary,
           chatController: _chat,
           currentUserId: _me,
           onMessageSend: _handleSend,
