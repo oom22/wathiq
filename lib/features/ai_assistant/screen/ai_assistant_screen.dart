@@ -1,8 +1,50 @@
+import 'dart:convert';
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_core/flutter_chat_core.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:http/http.dart' as http;
+
+/// Tiny client for Groq's Allam models (OpenAI-compatible).
+class AllamApi {
+  AllamApi(this.apiKey);
+
+  final String apiKey;
+
+  static const _endpoint = 'https://api.groq.com/openai/v1/chat/completions';
+
+  /// Sends a single-turn prompt to Allam and returns the assistant text.
+  Future<String> chat(String userText) async {
+    final res = await http.post(
+      Uri.parse(_endpoint),
+      headers: {
+        'Authorization': 'Bearer $apiKey',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'model': 'allam-2-7b',
+        'messages': [
+          {
+            'role': 'system',
+            'content':
+                'أنت مساعد ذكي ومتعاون. أجب بإيجاز وباللغة العربية متى أمكن.',
+          },
+          {'role': 'user', 'content': userText},
+        ],
+        'temperature': 0.2,
+      }),
+    );
+
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      final data = jsonDecode(res.body) as Map<String, dynamic>;
+      final reply = data['choices']?[0]?['message']?['content'] as String?;
+      return (reply ?? '').trim();
+    } else {
+      throw Exception('HTTP ${res.statusCode}: ${res.body}');
+    }
+  }
+}
 
 class AiAssistantScreen extends StatefulWidget {
   const AiAssistantScreen({super.key});
@@ -16,10 +58,15 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   static const _me = 'user1';
   static const _bot = 'assistant';
 
+  late final AllamApi _allam = AllamApi(
+    "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",
+  );
+
+  String _id() => (Random().nextInt(1 << 31)).toString();
+
   @override
   void initState() {
     super.initState();
-    // Optional welcome message
     _chat.insertMessage(
       TextMessage(
         id: _id(),
@@ -36,10 +83,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     super.dispose();
   }
 
-  String _id() => (Random().nextInt(1 << 31)).toString();
-
   Future<void> _handleSend(String text) async {
-    // Show my message immediately
+    // show my message immediately
     _chat.insertMessage(
       TextMessage(
         id: _id(),
@@ -50,10 +95,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     );
 
     try {
-      final res = await Gemini.instance.prompt(
-        parts: [Part.text(text)],
-      ); // ask Gemini
-      final reply = (res?.output ?? '').trim();
+      final reply = await _allam.chat(text);
       _chat.insertMessage(
         TextMessage(
           id: _id(),
@@ -68,7 +110,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
           id: _id(),
           authorId: _bot,
           createdAt: DateTime.now().toUtc(),
-          text: 'حدث خطأ: $e',
+          text: 'حدث خطأ أثناء الاتصال بـ Allam: $e',
         ),
       );
     }
@@ -85,8 +127,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
         ],
       ),
       body: Directionality(
-        // RTL for Arabic
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.rtl, // Arabic layout
         child: Chat(
           chatController: _chat,
           currentUserId: _me,
