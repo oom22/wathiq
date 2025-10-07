@@ -309,6 +309,7 @@ class _BelongingsDetailsScreenState extends State<BelongingsDetailsScreen> {
               ),
             );
           }).toList(),
+          SizedBox(height: 80,)
         ],
       ),
     );

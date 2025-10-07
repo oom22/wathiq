@@ -18,17 +18,16 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   List<Widget> _buildScreens() {
     return [
-    PersonalScreen(),
-    BelongingsScreen(),
-    AddScreen(),
-    AiAssistantScreen(),
-    DashboardScreen(),
+      PersonalScreen(),
+      BelongingsScreen(),
+      AddScreen(),
+      AiAssistantScreen(),
+      DashboardScreen(),
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
-
       PersistentBottomNavBarItem(
         icon: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -50,10 +49,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
       ),
 
       PersistentBottomNavBarItem(
-
         icon: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: const Icon(Icons.add,color: Colors.white, size: 29,),
+          child: const Icon(Icons.add, color: Colors.white, size: 29),
         ),
         activeColorPrimary: AppColors.secondary2,
         inactiveColorPrimary: Colors.white70,
@@ -84,16 +82,29 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     final navController = NavigationController();
-
     return PersistentTabView(
       context,
       controller: navController.controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
+
       backgroundColor: AppColors.secondary1,
+      navBarHeight: 70,
+
+     resizeToAvoidBottomInset: false,
+
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      padding: const EdgeInsets.only(top: 8, bottom: 5),
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(20),
-        colorBehindNavBar: Colors.white,
+        borderRadius: BorderRadius.circular(25),
+        colorBehindNavBar: AppColors.primary,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       navBarStyle: NavBarStyle.style15,
     );

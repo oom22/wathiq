@@ -98,237 +98,250 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           const SizedBox(height: 30),
 
-          Row(
+          //----------------------------------------------------------------
+         Row(
+  children: [
+
+    Expanded(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        color: AppColors.background,
+        elevation: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Expanded(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  color: AppColors.background,
-                  elevation: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: CircleAvatar(
-                            radius: 16,
-                            backgroundColor: AppColors.secondary1.withOpacity(
-                              0.2,
-                            ),
-                            child: const Icon(
-                              Icons.north_west,
-                              size: 18,
-                              color: AppColors.primary,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 4),
 
-                        const Text(
-                          "العقارات",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 60,
-                              height: 60,
-                              child: PieChart(
-                                PieChartData(
-                                  sectionsSpace: 0,
-                                  centerSpaceRadius: 14,
-                                  sections: [
-                                    PieChartSectionData(
-                                      color: AppColors.primary,
-                                      // value: 40,
-                                      radius: 22,
-                                    ),
-                                    PieChartSectionData(
-                                      color: AppColors.secondary1,
-                                      // value: 30,
-                                      radius: 22,
-                                    ),
-                                    PieChartSectionData(
-                                      color: AppColors.secondary2,
-                                      // value: 30,
-                                      radius: 22,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: const [
-                                  LegendItem(
-                                    label: "عمارة سكنية",
-                                    color: AppColors.secondary2,
-                                  ),
-                                  LegendItem(
-                                    label: "فيلا",
-                                    color: AppColors.secondary1,
-                                  ),
-                                  LegendItem(
-                                    label: "أرض",
-                                    color: AppColors.primary,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor:
+                          AppColors.secondary1.withOpacity(0.2),
+                      child: const Icon(
+                        Icons.north_west,
+                        size: 20,
+                        color: AppColors.primary,
+                      ),
                     ),
                   ),
-                ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 6),
+                      child: Text(
+                        "العقارات",
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(
+                          fontFamily: 'Cairo',
+                          fontSize: 21,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF0A3C40),
+                          height: 1.3,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+              const SizedBox(height: 20),
 
-              const SizedBox(width: 12),
 
-              Expanded(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 60,
+                    height: 75,
+                    child: PieChart(
+                      PieChartData(
+                        sectionsSpace: 0,
+                        centerSpaceRadius: 14,
+                        sections: [
+                          PieChartSectionData(
+                            color: AppColors.primary,
+                            radius: 22,
+                          ),
+                          PieChartSectionData(
+                            color: AppColors.secondary1,
+                            radius: 22,
+                          ),
+                          PieChartSectionData(
+                            color: AppColors.secondary2,
+                            radius: 22,
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  color: AppColors.background,
-                  elevation: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
+                  const SizedBox(width: 8),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: CircleAvatar(
-                            radius: 16,
-                            backgroundColor: AppColors.secondary1.withOpacity(
-                              0.2,
-                            ),
-                            child: const Icon(
-                              Icons.north_west,
-                              size: 18,
-                              color: AppColors.primary,
-                            ),
-                          ),
+                      children: const [
+                        LegendItem(
+                          label: "عمارة سكنية",
+                          color: AppColors.secondary2,
                         ),
-                        const SizedBox(height: 4),
-
-                        const Text(
-                          "نسبة الوحدات المؤجرة",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.right,
+                        LegendItem(
+                          label: "فيلا",
+                          color: AppColors.secondary1,
                         ),
-                        const SizedBox(height: 8),
-
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 60,
-                              height: 60,
-                              child: BarChart(
-                                BarChartData(
-                                  alignment: BarChartAlignment.center,
-                                  gridData: const FlGridData(show: false),
-                                  borderData: FlBorderData(show: false),
-                                  titlesData: const FlTitlesData(show: false),
-                                  barGroups: [
-                                    BarChartGroupData(
-                                      x: 0,
-                                      barRods: [
-                                        BarChartRodData(
-                                          toY: 3,
-                                          width: 20,
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(5),
-                                            topRight: Radius.circular(5),
-                                            bottomLeft: Radius.circular(5),
-                                            bottomRight: Radius.circular(5),
-                                          ),
-                                          color: AppColors.primary,
-                                        ),
-                                      ],
-                                    ),
-                                    BarChartGroupData(
-                                      x: 1,
-                                      barRods: [
-                                        BarChartRodData(
-                                          toY: 2.5,
-                                          width: 20,
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(5),
-                                            topRight: Radius.circular(5),
-                                            bottomLeft: Radius.circular(5),
-                                            bottomRight: Radius.circular(5),
-                                          ),
-                                          color: AppColors.secondary1,
-                                        ),
-                                      ],
-                                    ),
-                                    BarChartGroupData(
-                                      x: 2,
-                                      barRods: [
-                                        BarChartRodData(
-                                          toY: 3,
-                                          width: 20,
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(5),
-                                            topRight: Radius.circular(5),
-                                            bottomLeft: Radius.circular(5),
-                                            bottomRight: Radius.circular(5),
-                                          ),
-                                          color: AppColors.secondary2,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: const [
-                                  LegendItem(
-                                    label: "عمارة سكنية",
-                                    color: AppColors.secondary2,
-                                  ),
-                                  LegendItem(
-                                    label: "فيلا",
-                                    color: AppColors.secondary1,
-                                  ),
-                                  LegendItem(
-                                    label: "أرض",
-                                    color: AppColors.primary,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                        LegendItem(
+                          label: "أرض",
+                          color: AppColors.primary,
                         ),
                       ],
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),
+        ),
+      ),
+    ),
+
+    const SizedBox(width: 12),
+
+
+    Expanded(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        color: AppColors.background,
+        elevation: 1,
+        child: Padding(
+          padding: const EdgeInsets.all(7),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor:
+                          AppColors.secondary1.withOpacity(0.2),
+                      child: const Icon(
+                        Icons.north_west,
+                        size: 20,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        "نسبة الوحدات المؤجرة",
+                        textAlign: TextAlign.right,
+                        style: const TextStyle(
+                          fontFamily: 'Cairo',
+                          fontSize: 19,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF0A3C40),
+                          height: 1.3,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+
+              // ✅ المحتوى الداخلي
+              Row(
+                children: [
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: BarChart(
+                      BarChartData(
+                        alignment: BarChartAlignment.center,
+                        gridData: const FlGridData(show: false),
+                        borderData: FlBorderData(show: false),
+                        titlesData: const FlTitlesData(show: false),
+                        barGroups: [
+                          BarChartGroupData(
+                            x: 0,
+                            barRods: [
+                              BarChartRodData(
+                                toY: 3,
+                                width: 20,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5)),
+                                color: AppColors.primary,
+                              ),
+                            ],
+                          ),
+                          BarChartGroupData(
+                            x: 1,
+                            barRods: [
+                              BarChartRodData(
+                                toY: 2.5,
+                                width: 20,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5)),
+                                color: AppColors.secondary1,
+                              ),
+                            ],
+                          ),
+                          BarChartGroupData(
+                            x: 2,
+                            barRods: [
+                              BarChartRodData(
+                                toY: 3,
+                                width: 20,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5)),
+                                color: AppColors.secondary2,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: const [
+                        LegendItem(
+                          label: "عمارة سكنية",
+                          color: AppColors.secondary2,
+                        ),
+                        LegendItem(
+                          label: "فيلا",
+                          color: AppColors.secondary1,
+                        ),
+                        LegendItem(
+                          label: "أرض",
+                          color: AppColors.primary,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  ],
+),
+
+
+          //---------------------------------------------------------
           const SizedBox(height: 18),
 
           // --- CARD1---
@@ -341,7 +354,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ": الرياض",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: AppColors.primary,
+                    color: AppColors.secondary2,
                     fontSize: 18,
                   ),
                   textAlign: TextAlign.right,
@@ -363,7 +376,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ": ”مبادرة “توازن ",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: AppColors.primary,
+                    color: AppColors.secondary2,
                     fontSize: 18,
                   ),
                   textAlign: TextAlign.right,
@@ -386,7 +399,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   children: const [
                     Text(
                       "اخر تحديث قبل 3 ساعات",
-                      style: TextStyle(fontSize: 13, color: Color.fromARGB(255, 126, 126, 126)),
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Color.fromARGB(255, 126, 126, 126),
+                      ),
                     ),
                     SizedBox(width: 4),
                     Icon(Icons.access_time, size: 16, color: Colors.grey),
@@ -741,6 +757,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ),
           ),
+          const SizedBox(height: 80),
         ],
       ),
     );
@@ -763,7 +780,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 19,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primary,
+              ),
             ),
             if (subtitle != null)
               Padding(
@@ -803,7 +824,10 @@ class LegendItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(label, style: const TextStyle(fontSize: 12)),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 12, color: AppColors.primary),
+          ),
           const SizedBox(width: 4),
           CircleAvatar(radius: 4, backgroundColor: color),
         ],

@@ -38,3 +38,9 @@ flutter:
   assets:
     - assets/videos/
     - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-VariableFont_slnt,wght.ttf

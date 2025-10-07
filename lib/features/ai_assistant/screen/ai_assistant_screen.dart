@@ -85,7 +85,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   }
 
   Future<void> _handleSend(String text) async {
-    // show my message immediately
+
     _chat.insertMessage(
       TextMessage(
         id: _id(),
@@ -120,6 +120,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         title: const Text(
@@ -131,16 +132,27 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ],
       ),
-      body: Directionality(
-        textDirection: TextDirection.rtl, // Arabic layout
-        child: Chat(
-          backgroundColor: AppColors.primary,
-          chatController: _chat,
-          currentUserId: _me,
-          onMessageSend: _handleSend,
-          resolveUser:
-              (UserID id) async =>
-                  User(id: id, name: id == _me ? 'أنا' : 'المساعد'),
+
+      body: SafeArea(
+        bottom: false,
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom:
+                MediaQuery.of(context).padding.bottom +
+                80,
+          ),
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Chat(
+              backgroundColor: AppColors.primary,
+              chatController: _chat,
+              currentUserId: _me,
+              onMessageSend: _handleSend,
+              resolveUser:
+                  (UserID id) async =>
+                      User(id: id, name: id == _me ? 'أنا' : 'المساعد'),
+            ),
+          ),
         ),
       ),
     );

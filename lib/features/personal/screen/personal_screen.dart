@@ -49,7 +49,6 @@ class PersonalScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-
                     const ProfileOption(
                       title: "معلومات المكتب",
                       icon: Icons.receipt_long,
@@ -87,11 +86,14 @@ class PersonalScreen extends StatelessWidget {
                       ),
                       trailing: const Icon(Icons.logout, color: Colors.red),
                       onTap: () {
-                        Navigator.pushReplacement(
+                        Navigator.of(
                           context,
-                          MaterialPageRoute<void>(
-                            builder: (context) => AuthScreen(),
+                          rootNavigator: true,
+                        ).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const AuthScreen(),
                           ),
+                          (route) => false,
                         );
                       },
                     ),
